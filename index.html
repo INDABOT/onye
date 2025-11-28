@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarion Olusegun: Strategic Public Relations & CSR Specialist | Thought Leader</title>
+    <!-- SEO Metadata -->
+    <meta name="description" content="Results-driven Public Relations, Brand Communications, and CSR Specialist with expertise in media relations, corporate strategy, and social impact programming. Elevate your brand narrative.">
+    <meta name="keywords" content="Public Relations Specialist, Brand Communications Strategist, CSR Consultant, Social Impact Advocate, Media Relations Nigeria, NIPR Associate, Thought Leadership Writer">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Loading (Inter for Body, Source Sans Pro for Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        /* Brand Colors */
+        :root {
+            --color-primary: #0047AB; /* Impact Blue */
+            --color-secondary: #50C878; /* Impact Green */
+            --color-charcoal: #36454F; /* Charcoal Grey */
+        }
+        /* Custom Font Setup */
+        .font-heading { font-family: 'Source Sans Pro', sans-serif; }
+        .font-body { font-family: 'Inter', sans-serif; }
+
+        /* Custom Utility Classes */
+        .impact-blue-bg { background-color: var(--color-primary); }
+        .impact-blue-text { color: var(--color-primary); }
+        .impact-green-bg { background-color: var(--color-secondary); }
+        .impact-green-text { color: var(--color-secondary); }
+        .charcoal-text { color: var(--color-charcoal); }
+
+        /* Animation for section load */
+        .page-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .page-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <!-- Firebase SDK Imports (Required for Canvas Environment) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Set log level for debugging if needed
+        setLogLevel('error');
+
+        // Global variables provided by the Canvas environment
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'portfolio-app';
+
+        if (Object.keys(firebaseConfig).length > 0) {
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+
+            // Authentication logic
+            (async () => {
+                try {
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                        console.log("Firebase signed in with custom token.");
+                    } else {
+                        await signInAnonymously(auth);
+                        console.log("Firebase signed in anonymously.");
+                    }
+                } catch (error) {
+                    console.error("Firebase Auth Error:", error);
+                }
+            })();
+        } else {
+            console.warn("Firebase configuration not found. Running in standalone mode.");
+        }
+    </script>
+</head>
+<body class="font-body text-gray-800 bg-white">
+
+    <!-- A. Global Header (Sticky) -->
+    <header id="header" class="sticky top-0 z-50 bg-white shadow-lg backdrop-blur-md bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo/Name -->
+                <a href="#home" class="impact-blue-text text-2xl font-heading font-bold tracking-tight">
+                    C.O. Olusegun
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 font-medium">
+                    <a href="#home" class="nav-link text-gray-600 hover:impact-blue-text transition duration-300" data-page="home">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:impact-blue-text transition duration-300" data-page="about">About</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:impact-blue-text transition duration-300" data-page="services">Services</a>
+                    <a href="#portfolio" class="nav-link text-gray-600 hover:impact-blue-text transition duration-300" data-page="portfolio">Portfolio</a>
+                    <a href="#impact" class="nav-link text-gray-600 hover:impact-green-text transition duration-300" data-page="impact">Impact</a>
+                    <a href="#publications" class="nav-link text-gray-600 hover:impact-blue-text transition duration-300" data-page="publications">Thought Leadership</a>
+                </nav>
+
+                <!-- Primary CTA Button -->
+                <a href="#contact" id="contact-cta" class="hidden md:block impact-blue-bg text-white font-medium py-2 px-4 rounded-full shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    Let's Connect
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:impact-blue-text p-2 rounded-md transition duration-300">
+                    <!-- Icon for Menu -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-inner pb-4">
+            <nav class="flex flex-col space-y-2 px-4 font-medium">
+                <a href="#home" class="nav-link block py-2 text-gray-600 hover:impact-blue-text transition duration-300" data-page="home">Home</a>
+                <a href="#about" class="nav-link block py-2 text-gray-600 hover:impact-blue-text transition duration-300" data-page="about">About</a>
+                <a href="#services" class="nav-link block py-2 text-gray-600 hover:impact-blue-text transition duration-300" data-page="services">Services</a>
+                <a href="#portfolio" class="nav-link block py-2 text-gray-600 hover:impact-blue-text transition duration-300" data-page="portfolio">Portfolio</a>
+                <a href="#impact" class="nav-link block py-2 text-gray-600 hover:impact-green-text transition duration-300" data-page="impact">Impact</a>
+                <a href="#publications" class="nav-link block py-2 text-gray-600 hover:impact-blue-text transition duration-300" data-page="publications">Thought Leadership</a>
+                <a href="#contact" class="nav-link impact-blue-bg text-center text-white font-medium py-2 px-4 rounded-full mt-4" data-page="contact">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="min-h-screen">
+        <!-- Page content will be injected here by JavaScript -->
+    </main>
+
+    <!-- H. Global Footer -->
+    <footer class="bg-gray-50 py-12 border-t border-gray-200 font-body">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Col 1: Logo & Mission -->
+                <div>
+                    <a href="#home" class="impact-blue-text text-2xl font-heading font-bold tracking-tight mb-4 block">C.O. Olusegun</a>
+                    <p class="text-sm text-gray-500">Strategic Communications for Enduring Impact.</p>
+                </div>
+                <!-- Col 2: Sitemap -->
+                <div>
+                    <h4 class="text-lg font-heading font-semibold charcoal-text mb-4">Sitemap</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="text-gray-600 hover:impact-blue-text">About</a></li>
+                        <li><a href="#services" class="text-gray-600 hover:impact-blue-text">Services</a></li>
+                        <li><a href="#portfolio" class="text-gray-600 hover:impact-blue-text">Portfolio</a></li>
+                        <li><a href="#impact" class="text-gray-600 hover:impact-blue-text">CSR & Impact</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3: Contact -->
+                <div>
+                    <h4 class="text-lg font-heading font-semibold charcoal-text mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:olusegunclarion@gmail.com" class="text-gray-600 hover:impact-blue-text">olusegunclarion@gmail.com</a></li>
+                        <li><a href="tel:+2349060554441" class="text-gray-600 hover:impact-blue-text">+234 906 055 4441</a></li>
+                        <li><p class="text-gray-500">Victory Enclave, Magboro, Ogun State</p></li>
+                    </ul>
+                </div>
+                <!-- Col 4: Social & Accreditation -->
+                <div>
+                    <h4 class="text-lg font-heading font-semibold charcoal-text mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.linkedin.com/in/clarion-olusegun-594163230?" target="_blank" class="text-gray-600 hover:impact-blue-text transition duration-300" aria-label="LinkedIn">
+                            <!-- SVG for LinkedIn -->
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.564-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-4">Associate Member, NIPR</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-sm text-gray-400 border-t pt-6">
+                &copy; 2024 Clarion Oyeronke Olusegun. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Core Application Logic ---
+
+        const appContent = document.getElementById('app-content');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        
+        // --- Page Content Templates ---
+
+        // B. Home Page
+        const homePage = `
+            <div class="page-content" id="home">
+                <!-- B. Hero Section -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32 bg-white">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight charcoal-text">
+                                Clarion Oyeronke Olusegun: <span class="impact-blue-text">Strategic Communications</span> for a Sustainable Impact.
+                            </h1>
+                            <p class="font-body text-xl text-gray-600 mt-6 max-w-lg">
+                                A results-driven Public Relations, Brand Communications, and CSR Specialist with proven experience across media relations, corporate communication, digital engagement, and community impact projects. I build brand visibility and craft narratives that resonate and drive action.
+                            </p>
+                            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-10">
+                                <a href="#services" class="impact-blue-bg text-white font-medium py-3 px-8 rounded-full shadow-xl hover:bg-blue-700 transition duration-300 transform hover:scale-[1.02]">
+                                    View My Services
+                                </a>
+                                <a href="#contact" class="bg-transparent impact-blue-text border border-current font-medium py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300">
+                                    Let's Connect
+                                </a>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <!-- Placeholder for Professional Headshot -->
+                            <div class="w-full aspect-square overflow-hidden rounded-xl shadow-2xl">
+                                <img src="/images/headshot .jpg" alt="Clarion Olusegun Professional Headshot" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- C. Core Competencies -->
+                <section class="py-20 bg-gray-50">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-center charcoal-text mb-4">
+                            The Core of My Expertise
+                        </h2>
+                        <p class="text-lg text-center text-gray-600 mb-16">
+                            Bridging Strategy with Impact across key communications disciplines.
+                        </p>
+                        <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+                            <!-- Skill Card 1: PR Strategy & Media Relations -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-t-gray-300 hover:border-t-primary">
+                                <div class="impact-blue-text mb-4">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.552-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.448.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold charcoal-text mb-3">PR Strategy & Media Relations</h3>
+                                <p class="text-gray-600 text-sm">Developing strategic press office support and managing media landscape monitoring for optimal reputational risk management.</p>
+                            </div>
+                            <!-- Skill Card 2: Corporate Communication -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-t-gray-300 hover:border-t-primary">
+                                <div class="impact-blue-text mb-4">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20h-4.596a2 2 0 01-1.414-.586l-2.828-2.828a2 2 0 00-1.414-.586H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2z"></path></svg>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold charcoal-text mb-3">Corporate Communication</h3>
+                                <p class="text-gray-600 text-sm">Drafting, editing, and reviewing critical communication collateral, executive speeches, and presentations.</p>
+                            </div>
+                            <!-- Skill Card 3: CSR & Social Impact -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-t-gray-300 hover:border-t-secondary">
+                                <div class="impact-green-text mb-4">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold charcoal-text mb-3">CSR & Social Impact</h3>
+                                <p class="text-gray-600 text-sm">Designing and executing impactful community engagement, WASH, Youth, and Gender-focused social impact programmes.</p>
+                            </div>
+                            <!-- Skill Card 4: Thought Leadership Writing -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-t-gray-300 hover:border-t-primary">
+                                <div class="impact-blue-text mb-4">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.206 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.794 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.794 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.206 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold charcoal-text mb-3">Thought Leadership Writing</h3>
+                                <p class="text-gray-600 text-sm">Crafting compelling op-eds, press releases, and articles that position leaders and brands at the forefront of their industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- D. Featured Impact -->
+                <section class="py-20">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-center impact-green-text mb-4">
+                            Impact-Driven Leadership
+                        </h2>
+                        <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                            My commitment goes beyond strategy—it extends to tangible, community-driven social impact.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-10 items-center bg-gray-100 rounded-xl p-8 shadow-inner">
+                            <div class="md:order-1 order-2">
+                                <h3 class="font-heading text-2xl font-bold charcoal-text mb-4">The Teens Arise Initiative</h3>
+                                <p class="text-gray-700 leading-relaxed">
+                                    As Founder of Teens Arise Initiative, I designed and executed youth empowerment and menstrual hygiene projects, successfully leading community outreaches, school programmes, and reusable pad training. This work demonstrates my ability to integrate communication for development with hands-on project execution, creating measurable, positive change at the grassroots level.
+                                </p>
+                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
+                                    <li>Execution in youth empowerment & WASH advocacy.</li>
+                                    <li>Recipient of WASH Campaign Competition Winner award (2023).</li>
+                                    <li>Leadership in gender advocacy (Female Speaks Initiative).</li>
+                                </ul>
+                                <a href="#impact" class="inline-block impact-green-text border border-impact-green hover:impact-green-bg hover:text-white font-medium py-2 px-6 rounded-full mt-6 transition duration-300">
+                                    Explore All Impact Projects
+                                </a>
+                            </div>
+                            <div class="md:order-2 order-1">
+                                <!-- Placeholder for CSR Image -->
+                                <div class="w-full aspect-video overflow-hidden rounded-xl shadow-xl">
+                                    <img src="/images/TEENS.jpeg" alt="Teens Arise Initiative Community Outreach" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- E. Thought Leadership -->
+                <section class="py-20 bg-gray-50">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-center charcoal-text mb-12">
+                            Latest Insights & Strategic Commentary
+                        </h2>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Card 1 -->
+                            <a href="#publications" class="block bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                                <span class="text-xs impact-blue-text font-semibold uppercase tracking-wider">Op-Ed</span>
+                                <h3 class="font-heading text-xl font-bold charcoal-text my-2">Trapped, helpless, forgotten - The dark reality of this Ogun Community.</h3>
+                                <p class="text-gray-500 text-sm">Source: PM News Nigeria, Feb 2024</p>
+                            </a>
+                            <!-- Card 2 -->
+                            <a href="#publications" class="block bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                                <span class="text-xs impact-blue-text font-semibold uppercase tracking-wider">Feature Story</span>
+                                <h3 class="font-heading text-xl font-bold charcoal-text my-2">Silent screams: The hidden epidemic of violence against girls.</h3>
+                                <p class="text-gray-500 text-sm">Source: Campus Reporter Africa, 2024</p>
+                            </a>
+                            <!-- Card 3 -->
+                            <a href="#publications" class="block bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                                <span class="text-xs impact-blue-text font-semibold uppercase tracking-wider">Academic Thesis</span>
+                                <h3 class="font-heading text-xl font-bold charcoal-text my-2">Comparative Analysis of Corporate Social Responsibility Strategies...</h3>
+                                <p class="text-gray-500 text-sm">Source: Adekunle Ajasin University, 2024</p>
+                            </a>
+                        </div>
+                        <div class="text-center mt-12">
+                            <a href="#publications" class="inline-block impact-blue-text border border-impact-blue hover:impact-blue-bg hover:text-white font-medium py-3 px-8 rounded-full transition duration-300">
+                                View All Publications
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- F. Testimonial Snippet -->
+                <section class="py-20 impact-green-bg text-white">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zM12 11h.01M16 11h.01M8 11h.01M12 17s-2-2-4-2-4 2-4 2 2-2 4-2 4 2 4 2z"></path></svg>
+                        <blockquote class="text-3xl font-heading font-light leading-relaxed italic">
+                            "Her ability to translate complex CSR research into a compelling, public-facing report was exceptional. She is a dedicated <span class="font-bold">Social Impact Advocate</span>."
+                        </blockquote>
+                        <p class="mt-6 text-lg font-medium">Director, Community Impact NGO</p>
+                        <a href="#contact" class="inline-block bg-white impact-green-text font-medium py-2 px-6 rounded-full mt-6 hover:bg-gray-100 transition duration-300">
+                            Request References
+                        </a>
+                    </div>
+                </section>
+
+                <!-- G. Final CTA -->
+                <section class="py-24 bg-white">
+                    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 class="font-heading text-4xl font-bold charcoal-text mb-4">
+                            Ready to Elevate Your Brand Narrative?
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-8">
+                            Precision strategy, measurable impact, and credible communication—let's define your next success story.
+                        </p>
+                        <a href="#contact" class="impact-blue-bg text-white font-medium py-3 px-10 rounded-full text-lg shadow-2xl hover:bg-blue-700 transition duration-300 transform hover:scale-[1.05]">
+                            Start a Conversation Today
+                        </a>
+                    </div>
+                </section>
+            </div>
+        `;
+
+        // --- Router & Initialization Logic ---
+        
+        const routes = {
+            '#home': { title: 'Clarion Olusegun: Strategic Public Relations & CSR Specialist', content: homePage, meta: 'Results-driven Public Relations, Brand Communications, and CSR Specialist with expertise in media relations, corporate strategy, and social impact programming.' },
+            '#about': { title: 'About Clarion Olusegun: NIPR Associate & Communications Strategist', content: generateAboutPage(), meta: 'I am Clarion Oyeronke Olusegun, an NIPR Associate and Mass Communication graduate. My approach is rooted in precision, integrity, and cultural intelligence across PR and CSR projects.' },
+            '#services': { title: 'PR, Communications, & CSR Consulting Services | Clarion Olusegun', content: generateServicesPage(), meta: 'Strategic solutions for enduring brand growth: Corporate Storytelling, CSR & Social Impact Advisory, and Thought Leadership & Digital Engagement services.' },
+            '#portfolio': { title: 'Portfolio & Case Studies | Corporate Communications', content: generatePortfolioPage(), meta: 'Demonstrated success in client communication, campaign development, and content creation across various industries.' },
+            '#impact': { title: 'Corporate Social Responsibility (CSR) & WASH Advocacy Projects', content: generateImpactPage(), meta: 'Explore leadership roles in the Teens Arise Initiative, WASH campaign, and gender advocacy, showcasing proven social impact execution.' },
+            '#publications': { title: 'Thought Leadership & Publications | Op-Eds & Research', content: generatePublicationsPage(), meta: 'Access published op-eds, academic thesis, and strategic communication articles by Clarion Olusegun, NIPR Associate.' },
+            '#contact': { title: 'Get In Touch | Contact Clarion Olusegun', content: generateContactPage(), meta: 'Ready to elevate your brand narrative? Contact Clarion Oyeronke Olusegun for strategic inquiries and collaboration opportunities.' },
+        };
+
+        function updateMetaTags(route) {
+            document.title = route.title;
+            document.querySelector('meta[name="description"]').setAttribute('content', route.meta);
+        }
+
+        function renderContent(hash) {
+            const path = hash || '#home';
+            const route = routes[path];
+
+            if (route) {
+                // Remove previous content with fade-out effect
+                const oldContent = appContent.querySelector('.page-content.active');
+                if (oldContent) {
+                    oldContent.classList.remove('active');
+                    setTimeout(() => {
+                        appContent.innerHTML = route.content;
+                        // Add fade-in effect to new content
+                        requestAnimationFrame(() => {
+                            appContent.querySelector('.page-content').classList.add('active');
+                        });
+                    }, 500); // Match transition duration
+                } else {
+                     // Initial load
+                    appContent.innerHTML = route.content;
+                    requestAnimationFrame(() => {
+                        appContent.querySelector('.page-content').classList.add('active');
+                    });
+                }
+                updateMetaTags(route);
+                window.scrollTo(0, 0); // Scroll to top on page change
+            } else {
+                appContent.innerHTML = '<h2>404 Page Not Found</h2>';
+                updateMetaTags(routes['#home']);
+            }
+        }
+
+        // --- Event Listeners and Initializers ---
+
+        window.addEventListener('hashchange', () => {
+            renderContent(window.location.hash);
+            mobileMenu.classList.add('hidden'); // Close mobile menu on navigation
+        });
+
+        window.addEventListener('load', () => {
+            renderContent(window.location.hash);
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Delegate click handler for navigation links (to catch mobile menu clicks too)
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.nav-link')) {
+                const href = e.target.closest('.nav-link').getAttribute('href');
+                if (href) {
+                    window.location.hash = href;
+                }
+            }
+        });
+
+
+        // --- Auxiliary Page Generation Functions ---
+
+        function generateAboutPage() {
+            return `
+                <div class="page-content" id="about">
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold charcoal-text mb-12 text-center">The Strategist Behind the Story.</h1>
+
+                        <div class="grid md:grid-cols-3 gap-10 items-start">
+                            <div class="md:col-span-2">
+                                <h2 class="font-heading text-3xl font-bold impact-blue-text mb-6">A Foundation in Precision & Impact</h2>
+                                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                                    I am Clarion Oyeronke Olusegun, a Mass Communication graduate (Second Class Upper) and an 
+                                    <span class="font-semibold impact-blue-text">Associate of the Nigerian Institute of Public Relations (NIPR)</span>. 
+                                    My career is built on the philosophy that effective communication must be rooted in precision, integrity, and cultural intelligence. 
+                                    I thrive in fast-paced environments, capable of supporting brand visibility, managing complex PR activities, and coordinating content across multi-channel platforms.
+                                </p>
+                                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                                    My dual expertise spans traditional corporate communication—including media relations, executive writing, and collateral development—and a deep passion for 
+                                    <span class="font-semibold impact-green-text">CSR, sustainability, and communication for development</span>. 
+                                    I have demonstrated success executing programs in youth empowerment, WASH advocacy, and gender initiatives, proving that strategic communication can deliver tangible social impact.
+                                </p>
+
+                                <div class="bg-gray-100 p-6 rounded-xl border-l-4 border-l-impact-blue mt-8">
+                                    <h3 class="font-heading text-xl font-bold charcoal-text mb-3">Key Professional Values</h3>
+                                    <div class="flex flex-wrap gap-4 text-sm font-medium">
+                                        <span class="bg-white px-3 py-1 rounded-full shadow-sm impact-blue-text border border-impact-blue">Integrity</span>
+                                        <span class="bg-white px-3 py-1 rounded-full shadow-sm impact-blue-text border border-impact-blue">Ownership</span>
+                                        <span class="bg-white px-3 py-1 rounded-full shadow-sm impact-green-text border border-impact-green">Impact-Focused</span>
+                                        <span class="bg-white px-3 py-1 rounded-full shadow-sm impact-blue-text border border-impact-blue">Precision Execution</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-1">
+                                <!-- Placeholder for Secondary Headshot -->
+                                <div class="w-full aspect-square overflow-hidden rounded-xl shadow-2xl mb-8">
+                                    <img src="/images/head 2.jpg" alt="Clarion Olusegun Secondary Headshot" class="w-full h-full object-cover">
+                                </div>
+
+                                <h3 class="font-heading text-xl font-bold charcoal-text mb-3">Education</h3>
+                                <div class="border-l border-gray-300 pl-4 space-y-4">
+                                    <div class="relative">
+                                        <span class="absolute -left-2.5 top-1 w-5 h-5 impact-blue-bg rounded-full border-2 border-white"></span>
+                                        <p class="font-semibold text-gray-800">B.Sc. Mass Communication (Second Class Upper)</p>
+                                        <p class="text-sm text-gray-600">Adekunle Ajasin University, Akungba Akoko, Nigeria | 2018-2024</p>
+                                    </div>
+                                    <div class="relative">
+                                        <span class="absolute -left-2.5 top-1 w-5 h-5 impact-blue-bg rounded-full border-2 border-white"></span>
+                                        <p class="font-semibold text-gray-800">Associate Member, NIPR</p>
+                                        <p class="text-sm text-gray-600">Nigerian Institute of Public Relations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Awards and Certifications -->
+                        <div class="mt-16">
+                            <h2 class="font-heading text-3xl font-bold charcoal-text mb-8 border-b pb-2">Accolades & Professional Development</h2>
+                            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+                                ${generateCertificationCard('Fact-Checking & Countering Misinformation', 'ICIR')}
+                                ${generateCertificationCard('Leadership & Social Impact', 'Female & More Africa')}
+                                ${generateCertificationCard('Project Management', 'Female & More Africa')}
+                                ${generateCertificationCard('Best Writer of the Year (2023)', 'Mass Communication Dept.')}
+                                ${generateCertificationCard('Rising Star (2023)', 'The PRO Female')}
+                                ${generateCertificationCard('Winner - WASH Campaign Competition (2023)', 'Self Help Africa')}
+                                <!-- Add more awards/certifications -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+        
+        function generateCertificationCard(title, issuer) {
+            return `
+                <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <p class="text-base font-medium impact-blue-text">${title}</p>
+                    <p class="text-xs text-gray-500 mt-1">${issuer}</p>
+                </div>
+            `;
+        }
+
+        function generateServicesPage() {
+            return `
+                <div class="page-content" id="services">
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold charcoal-text mb-6 text-center">Strategic Solutions for Enduring Brand Growth.</h1>
+                        <p class="text-xl text-gray-600 mb-16 text-center max-w-3xl mx-auto">
+                            My services are structured to deliver measurable results, positioning your brand with confidence, credibility, and purpose.
+                        </p>
+
+                        <div class="space-y-16">
+                            <!-- Service Package 1: Corporate Storytelling & PR Strategy -->
+                            ${generateServicePackage(
+                                'Corporate Storytelling & PR Strategy',
+                                'Crafting impeccable narratives and managing media landscapes to ensure high-impact brand visibility.',
+                                'impact-blue-text',
+                                'impact-blue-bg',
+                                [
+                                    'Executive speeches, presentations & talking points.',
+                                    'Media relations strategy & press office support.',
+                                    'Drafting, editing & reviewing communication collateral.',
+                                    'Crisis communication awareness and reputational risk analysis.'
+                                ]
+                            )}
+
+                            <!-- Service Package 2: CSR & Social Impact Advisory -->
+                            ${generateServicePackage(
+                                'CSR & Social Impact Advisory',
+                                'Developing, executing, and communicating purpose-driven initiatives that align with global sustainability goals.',
+                                'impact-green-text',
+                                'impact-green-bg',
+                                [
+                                    'CSR research, strategy design, and reporting.',
+                                    'Social impact programme design (Youth, WASH, Gender).',
+                                    'Sustainability communication and stakeholder engagement.',
+                                    'Community engagement and hands-on project execution.'
+                                ]
+                            )}
+
+                            <!-- Service Package 3: Thought Leadership & Digital Engagement -->
+                            ${generateServicePackage(
+                                'Thought Leadership & Digital Engagement',
+                                'Establishing industry authority through high-quality written content and strategic digital channel management.',
+                                'charcoal-text',
+                                'bg-gray-400',
+                                [
+                                    'Brand visibility & thought leadership writing (op-eds, blogs).',
+                                    'Content calendars, newsletters, and scripts.',
+                                    'Social media management and performance monitoring.',
+                                    'Digital content strategy across WordPress and major platforms.'
+                                ]
+                            )}
+                        </div>
+                    </section>
+                    <section class="py-16 impact-blue-bg text-white text-center">
+                        <h3 class="text-3xl font-heading font-semibold mb-4">Ready to Scope Your Project?</h3>
+                        <p class="text-lg mb-6">Let's discuss how customized strategies can meet your specific communication goals.</p>
+                        <a href="#contact" class="bg-white impact-blue-text font-medium py-3 px-8 rounded-full text-lg shadow-xl hover:bg-gray-100 transition duration-300">
+                            Book a Strategy Session
+                        </a>
+                    </section>
+                </div>
+            `;
+        }
+
+        function generateServicePackage(title, description, titleColorClass, iconBgClass, features) {
+            const featureList = features.map(f => `
+                <li class="flex items-start space-x-3">
+                    <svg class="w-6 h-6 flex-shrink-0 ${titleColorClass}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span class="text-gray-700">${f}</span>
+                </li>
+            `).join('');
+
+            return `
+                <div class="grid md:grid-cols-3 gap-10 bg-white p-8 md:p-12 rounded-2xl shadow-xl border-t-8 border-t-gray-200">
+                    <div class="md:col-span-1">
+                        <div class="w-12 h-12 ${iconBgClass} rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-9 1l-3 3v2h18v-2l-3-3m-6 0h6"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold ${titleColorClass} mb-3">${title}</h3>
+                        <p class="text-gray-600">${description}</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <ul class="space-y-4 font-body">
+                            ${featureList}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generatePortfolioPage() {
+            // Mock data based on CV experience
+            const projects = [
+                { title: 'LASIEC Local Government Election Campaign Proposal', client: 'StateCraft Inc', period: '2022-Present', description: 'Developed a comprehensive strategic communication proposal for the LASIEC Local Government Election campaign, focusing on stakeholder messaging and public engagement.', focus: ['PR Strategy', 'Campaign Development', 'Stakeholder Engagement'] },
+                { title: 'Adron Homes Brand Promotional Video Content', client: 'Adron Homes (NYSC)', period: '2025', description: 'Featured in and developed communication scripts for brand promotional videos, directly enhancing brand visibility and storytelling across digital channels.', focus: ['Brand Storytelling', 'Video Communication', 'Content Development'] },
+                { title: 'Agri-Tech Trend Research & Feature Stories', client: 'AgroNigeria', period: '2024', description: 'Researched agri-tech trends, produced feature stories, press releases, and sector-focused articles, and developed proposals for stakeholder partnerships.', focus: ['Sector Research', 'Feature Writing', 'Digital Content'] },
+                { title: 'Red for Africa Client Communication Support', client: 'Red for Africa', period: '2022-Present', description: 'Supported diverse client communication through thought leadership articles, social media content, media research, and project coordination.', focus: ['Thought Leadership', 'Media Research', 'PR Content'] },
+                { title: 'Mosron Communications Thought Leadership Support', client: 'Mosron Communications', period: '2024', description: 'Supported media research, database development, and wrote internal documentation and thought-leadership articles to strengthen client positioning.', focus: ['Internal Documentation', 'Thought Leadership', 'Database Development'] }
+            ];
+
+            const projectCards = projects.map(p => `
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300">
+                    <p class="text-sm font-medium text-gray-500">${p.client} | ${p.period}</p>
+                    <h3 class="font-heading text-2xl font-bold impact-blue-text my-2">${p.title}</h3>
+                    <p class="text-gray-700 mb-4">${p.description}</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${p.focus.map(f => `<span class="bg-gray-100 text-xs font-semibold px-3 py-1 rounded-full text-gray-600">${f}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="page-content" id="portfolio">
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold charcoal-text mb-6 text-center">Portfolio & Case Studies</h1>
+                        <p class="text-xl text-gray-600 mb-16 text-center max-w-3xl mx-auto">
+                            Demonstrated success in translating strategic goals into measurable outcomes across client communication, brand storytelling, and thought leadership.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${projectCards}
+                        </div>
+
+                        <div class="text-center mt-16 p-8 bg-gray-50 rounded-xl">
+                            <h3 class="font-heading text-2xl font-bold charcoal-text mb-4">Looking for Specific Results?</h3>
+                            <p class="text-gray-600 mb-6">My full portfolio, including detailed results and media clippings, is available upon request.</p>
+                            <a href="#contact" class="impact-blue-bg text-white font-medium py-3 px-8 rounded-full shadow-xl hover:bg-blue-700 transition duration-300">
+                                Request Full Portfolio
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function generateImpactPage() {
+            const impactProjects = [
+                { title: 'Teens Arise Initiative (Founder)', years: 'Ongoing', role: 'Designed and executed youth empowerment and menstrual hygiene projects. Led community outreaches, school programmes, reusable pad training, and impact measurement.', tags: ['Youth Empowerment', 'Gender Advocacy', 'Project Execution'] },
+                { title: 'WASH Campaign Competition Winner', years: '2023', role: 'Designed an impactful Water, Sanitation & Hygiene (WASH) project for vulnerable school communities, recognized by Self Help Africa.', tags: ['WASH Advocacy', 'Community Development', 'Campaign Design'] },
+                { title: 'Female Speaks Initiative (Coordinator)', years: '2022', role: 'Led gender advocacy, training, and mentorship programmes, focusing on empowering young women.', tags: ['Gender Advocacy', 'Mentorship', 'Leadership'] },
+                { title: 'NYSC SDGs & OBS Assistant Editor', years: '2024-2025', role: 'Led editorial reporting and participated in community development projects including school outreach and library development, aligning with Sustainable Development Goals.', tags: ['SDG Alignment', 'Editorial Leadership', 'Community Outreach'] }
+            ];
+
+            const projectItems = impactProjects.map(p => `
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-l-impact-green hover:shadow-xl transition duration-300">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-heading text-xl font-bold impact-green-text">${p.title}</h3>
+                        <span class="text-sm text-gray-500">${p.years}</span>
+                    </div>
+                    <p class="text-gray-700 mb-3">${p.role}</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${p.tags.map(t => `<span class="bg-impact-green-bg/10 text-xs font-semibold px-3 py-1 rounded-full impact-green-text">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="page-content" id="impact">
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold impact-green-text mb-6 text-center">CSR & Social Impact Projects</h1>
+                        <p class="text-xl text-gray-600 mb-16 text-center max-w-3xl mx-auto">
+                            Proven commitment to social responsibility, translating communication skills into tangible community development and empowerment initiatives.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-10">
+                            ${projectItems}
+                        </div>
+
+                        <div class="mt-16 text-center p-8 bg-impact-green-bg text-white rounded-xl shadow-2xl">
+                            <h3 class="font-heading text-2xl font-bold mb-4">Advocacy for Development</h3>
+                            <p class="text-lg mb-6">My work is driven by passion for communication for development, spanning areas like WASH, youth empowerment, and gender equity, validated by the Self Help Africa WASH Campaign Competition win.</p>
+                            <a href="#contact" class="bg-white impact-green-text font-medium py-3 px-8 rounded-full text-lg shadow-xl hover:bg-gray-100 transition duration-300">
+                                Collaborate on Impact
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+        
+        function generatePublicationsPage() {
+            const publications = [
+                { title: 'Comparative Analysis of Corporate Social Responsibility Strategies Adopted by Access Bank and United Bank for Africa Plc', type: 'Academic Thesis', source: 'Adekunle Ajasin University', date: '2024', link: '#contact' },
+                { title: 'Trapped, helpless, forgotten - The dark reality of this Ogun Community.', type: 'Op-Ed', source: 'PM News Nigeria', date: 'Feb 22, 2024', link: 'https://pmnewsnigeria.com/2025/02/22/trapped-helpless-forgotten-the-dark-reality-of-this-ogun-community/' },
+                { title: 'Silent screams: The hidden epidemic of violence against girls.', type: 'Feature Story', source: 'Campus Reporter Africa', date: '2024', link: 'https://campusreporter.africa/silent-screams-the-hidden-epidemic-of-violence-against-women-and-girls-in-nigeria/' },
+                { title: 'Cost of Living: How Nigerian Students Study with Empty Stomach.', type: 'Feature Story', source: 'AgroNigeria', date: '2024', link: 'https://agronigeria.ng/cost-of-living-how-nigerian-students-study-with-empty-stomach/' },
+                { title: 'Students to ASUU- Sacrifice for students\' sake.', type: 'Opinion Piece', source: 'The Nation Newspaper', date: '2022', link: 'https://thenationonlineng.net/students-to-assu-sacrifice-for-students-sake/' },
+                { title: 'Ondo Writing Festival: The Relationship Between Writing and Public Relations', type: 'Speaking Engagement', source: 'Ondo Writing Festival', date: '2024', link: '#contact' },
+            ];
+
+            const listItems = publications.map(p => `
+                <a href="${p.link}" target="_blank" class="block bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border-l-4 border-l-gray-300 hover:border-l-impact-blue group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs impact-blue-text font-semibold uppercase tracking-wider">${p.type}</span>
+                            <h3 class="font-heading text-xl font-bold charcoal-text my-1 group-hover:impact-blue-text transition duration-300">${p.title}</h3>
+                            <p class="text-gray-500 text-sm">${p.source} | ${p.date}</p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:impact-blue-text transition duration-300 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-4l6-6m0 0H14m2 0v4"></path></svg>
+                    </div>
+                </a>
+            `).join('');
+
+            return `
+                <div class="page-content" id="publications">
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold charcoal-text mb-6 text-center">Thought Leadership & Publications</h1>
+                        <p class="text-xl text-gray-600 mb-16 text-center max-w-3xl mx-auto">
+                            Access my published research, strategic op-eds, and key speaking engagements that position me as an industry expert and intellectual asset.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            ${listItems}
+                        </div>
+
+                        <div class="mt-16 text-center p-8 bg-gray-100 rounded-xl">
+                            <h3 class="font-heading text-2xl font-bold charcoal-text mb-4">Speaking Engagements</h3>
+                            <p class="text-gray-600 mb-6">I am available for keynote, panel, and educational engagements on PR, Brand Strategy, and Social Impact.</p>
+                            <a href="#contact" class="impact-blue-text border border-impact-blue hover:impact-blue-bg hover:text-white font-medium py-3 px-8 rounded-full transition duration-300">
+                                Invite Me to Speak
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function generateContactPage() {
+            return `
+                <div class="page-content" id="contact">
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold impact-blue-text mb-6 text-center">Let's Define Your Next Success Story.</h1>
+                        <p class="text-xl text-gray-600 mb-16 text-center max-w-3xl mx-auto">
+                            I am currently open to strategic consulting and collaboration opportunities in Public Relations, Brand Communications, and CSR.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-12 bg-gray-50 p-8 rounded-2xl shadow-xl">
+                            <!-- Contact Form -->
+                            <div>
+                                <h2 class="font-heading text-3xl font-bold charcoal-text mb-6">Send a Strategic Inquiry</h2>
+                                <form action="#" method="POST" class="space-y-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <input type="text" id="name" name="name" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-impact-blue focus:ring-impact-blue p-3">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                        <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-impact-blue focus:ring-impact-blue p-3">
+                                    </div>
+                                    <div>
+                                        <label for="subject" class="block text-sm font-medium text-gray-700">Inquiry Type</label>
+                                        <select id="subject" name="subject" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-impact-blue focus:ring-impact-blue p-3 appearance-none">
+                                            <option value="">Select an option</option>
+                                            <option value="PR Inquiry">PR Strategy / Media Relations</option>
+                                            <option value="CSR Partnership">CSR & Social Impact Partnership</option>
+                                            <option value="Speaking Engagement">Speaking / Thought Leadership Invite</option>
+                                            <option value="General">General Inquiry</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700">Message / Project Outline</label>
+                                        <textarea id="message" name="message" rows="5" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-impact-blue focus:ring-impact-blue p-3" placeholder="How can I help you elevate your brand narrative?"></textarea>
+                                    </div>
+                                    <button type="submit" class="w-full impact-blue-bg text-white font-medium py-3 px-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-[1.01]">
+                                        Submit Inquiry
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Contact Details & Values -->
+                            <div class="p-6 bg-white rounded-xl shadow-lg border-t-4 border-t-impact-blue">
+                                <h2 class="font-heading text-3xl font-bold charcoal-text mb-6">Direct Channels</h2>
+                                <div class="space-y-6">
+                                    <div>
+                                        <h3 class="text-lg font-semibold impact-blue-text">Email</h3>
+                                        <p class="text-gray-700">olusegunclarion@gmail.com</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold impact-blue-text">Phone</h3>
+                                        <p class="text-gray-700">+234 906 055 4441</p>
+                                        <p class="text-gray-700">+234 708 463 8966</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold impact-blue-text">Location</h3>
+                                        <p class="text-gray-700">Victory Enclave, Oke-Afa, Magboro, Ogun State, Nigeria</p>
+                                    </div>
+                                    <div class="pt-4 border-t">
+                                        <h3 class="text-lg font-semibold impact-blue-text">Professional Links</h3>
+                                        <a href="https://www.linkedin.com/in/clarion-olusegun-594163230?" target="_blank" class="text-gray-600 hover:impact-blue-text transition duration-300 flex items-center mt-2">
+                                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.564-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                            LinkedIn Profile
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
